@@ -1,20 +1,12 @@
-
 /**
  *
  *
- * @param  {function} { getResourceName } description
- * @param  {function} getPolicy           description
- * @param  {String} jwtName             description
- * @return {Boolean}                     description
+ * @param  {Object}
+ * @return {Boolean}
  */
 
-const CanCan = function ({ getResourceName }, getPolicy, jwtName = 'jwt') {
+const CanCan = function (policy) {
   return (req) => {
-    const jwt = req[jwtName];
-
-    const resourceName = getResourceName(req);
-    const policy = getPolicy(resourceName);
-
     return (action) => {
       const policyAction = policy[action];
       // Si il n'y a pas de politique pour cette action on arrête
